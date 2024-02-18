@@ -1,0 +1,15 @@
+{
+  "name": "kstah",
+  "version": "1.0.0",
+  "description": "Just a simple little app that I can use during streams for breaks and such.  Not a ton here yet.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "figlet": "^1.7.0"
+  }
+}
