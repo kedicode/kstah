@@ -7,26 +7,37 @@ function app() {
     const message = process.argv[3];
     console.log(countdown);
     let totalInterval = parseInt(countdown * 60);
-    // get our process
-    const ttyProcess = process.stdout;
+
     const running = setInterval(() => {
-        // ttyProcess.cursorTo(0, 0, () => {
-        //     console.clear();
-        // });
         console.clear();
-        // const [width, height] = ttyProcess.getWindowSize();
-        // const x = Math.floor(Math.random() * width);
-        // const y = Math.floor(Math.random() * height);
-        // ttyProcess.cursorTo(x, y);
-        figlet(`${message}: ${totalInterval--}`, (err, data) => {
-            console.log(data);
+        const ttyProcess = process.stdout;
+        const columns = ttyProcess.columns;
+        const rows = ttyProcess.rows;
+
+        // We get a temp to get the total columns and rows needs for the x and y buffer
+        const figletOut = figlet.textSync(`${0}${message}: ${totalInterval--}`);
+        const derivedWidth = figletOut.indexOf('\n');
+        const derivedRows = figletOut.split('\n').length;
+        const x = Math.floor(Math.random() * (columns - derivedWidth));
+        const y = Math.floor(Math.random() * (rows - derivedRows));
+        let yBuffer = createPadding('\n', y);
+        let xBuffer = createPadding(" ", x);
+        figlet.text(`${xBuffer}${message}: ${totalInterval--}`, (err, data) => {
+            ttyProcess.write(yBuffer + data);
         });
-        // console.log(width, height);
         if(totalInterval < 0){
             clearInterval(running);
         }
     }, 1000);
 
+}
+
+function createPadding(name, count){
+    let result = "";
+    for(let i = 0; i < count; i++){
+        result += name;
+    }
+    return result;
 }
 
 app();

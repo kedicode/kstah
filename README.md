@@ -8,9 +8,12 @@ and the message as a string
 node app.js 5 "message"
 ```
 
+## Examples
+![example.gif](./readmeGif.gif)
 
 ## In Progress
 - [x] Find node modules to use
 - [x] Convert the input into total seconds
 - [x] Add message param
+- [x] Move the message around.
 - [ ] Convert show the input in countdown format with m:ss left
