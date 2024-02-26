@@ -11,6 +11,7 @@ node app.js 5 "message"
 
 ## Examples
 Gif below is an example of calling the app from terminal.
+
 ![example.gif](./readmeGif.gif)
 
 ## In Progress
