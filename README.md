@@ -19,4 +19,4 @@ Gif below is an example of calling the app from terminal.
 - [x] Convert the input into total seconds
 - [x] Add message param
 - [x] Move the message around.
-- [ ] Convert show the input in countdown format with m:ss left
+- [x] Convert show the input in countdown format with m:ss left
